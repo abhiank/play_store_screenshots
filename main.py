@@ -12,12 +12,12 @@ search_term = input("Search term : ")
 folder_location = input("folder location : ")
 
 search_results = play_scraper.search(search_term, page=pages)
-count = int(count_input)
+max_count = int(count_input)
+count = 0
 
 for item in search_results:
 
-    count = count + 1
-    if count == 15:
+    if count == max_count:
         break
 
     result = app(
@@ -42,5 +42,7 @@ for item in search_results:
         im.save(name + ".png", "png")
         os.remove(name + ".webp")
         i = i + 1
+
+    count = count + 1
 
     time.sleep(3)
